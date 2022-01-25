@@ -21,7 +21,6 @@ public:
         ans.push_back(candidates[i]);
         sum+= candidates[i];
         if(sum<=target) recur(candidates, target, i, n, sum, ans);
-        if(sum<target) recur(candidates, target, i+2, n, sum, ans);
     
         ans.pop_back();
         sum-= candidates[i];
