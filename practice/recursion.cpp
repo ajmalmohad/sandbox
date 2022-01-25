@@ -29,10 +29,11 @@ int bsearch(int arr[], int left, int right, int val){
 }
 
 vector<vector<int>> solution;
-void subsets(int arr[], int i, int n, vector<int> ans){
+void subsets(int arr[], int i, int n, vector<int> &ans){
     if(i==n){solution.push_back(ans);  return;}
-    subsets(arr, i+1 , n, ans);
     ans.push_back(arr[i]);
+    subsets(arr, i+1 , n, ans);
+    ans.pop_back();
     subsets(arr, i+1 , n, ans);
     return;
 }
