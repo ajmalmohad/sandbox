@@ -55,26 +55,27 @@ using namespace std;
 unordered_map<int, bool> rowHash;
 unordered_map<int, bool> bottomLeftHash;
 unordered_map<int, bool> topLeftHash;
+vector<vector<string>> all;
 
 //O(1)
 bool isSafe(int r, int c, vector<vector<bool>> &matrix){
-
-    if(rowHash[r]) return false;
-    if(bottomLeftHash[r+c]) return false;
-    if(topLeftHash[r-c]) return false;
-
+    if(rowHash[r] || bottomLeftHash[r+c] || topLeftHash[r-c]) return false;
     return true;
 }
 
-bool solve(vector<vector<bool>> &matrix, int col, int n){
+void solve(vector<vector<bool>> &matrix, int col, int n){
     if(col == n){
+        vector<string> rows;
         for (auto x : matrix){
+            string s="";
             for (auto y : x){
-                cout<<y<<" ";
+                if(y) s+="Q";
+                else s+=".";
             }
-            cout<<'\n';
+            rows.push_back(s);
         }
-        return true;
+        all.push_back(rows);
+        return;
     }
 
     for (int row = 0; row < n; row++){
@@ -83,7 +84,7 @@ bool solve(vector<vector<bool>> &matrix, int col, int n){
             rowHash[row] = true;
             bottomLeftHash[row+col] = true;
             topLeftHash[row-col] = true;
-            if(solve(matrix, col+1, n)) return true;
+            solve(matrix, col+1, n);
             topLeftHash[row-col] = false;
             bottomLeftHash[row+col] = false;
             rowHash[row] = false;
@@ -91,13 +92,11 @@ bool solve(vector<vector<bool>> &matrix, int col, int n){
         }
     }
     
-    return false;
+    return;
 }
 
 int main(){
     int n=4;
     vector<vector<bool>> matrix(n, vector<bool>(n,false));
-    if(!solve(matrix, 0, n)){
-        cout<<"No Solutions";
-    }
+    solve(matrix, 0, n);
 }
