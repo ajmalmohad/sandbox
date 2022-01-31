@@ -1,17 +1,18 @@
 #include<iostream>
-#include<vector>
-#define long long ll
 using namespace std;
+typedef long long ll;
+
 void solve();
 
-main()
-{
+int main(){
     int t=1;
+    cin>>t;
     while(t--) solve();
     return 0;
 }
 
 void solve(){
-    int n;
-    cin>>n;
+    int a,b;
+    cin>>a>>b;
+    cout<<"NO\n";
 }
