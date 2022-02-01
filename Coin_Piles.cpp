@@ -14,5 +14,4 @@ int main(){
 void solve(){
     int a,b;
     cin>>a>>b;
-    cout<<"NO\n";
 }
