@@ -4,13 +4,15 @@
 #include<set>
 #include<cmath>
 #include<algorithm>
-#include <numeric>
 using namespace std;
 typedef long long ll;
 
 void solve(){
     ll n;
     cin>>n;
+    ll l = -n+1;
+    ll r = n;
+    cout<<l<<" "<<r<<'\n';  
 }
 
 int main(){
