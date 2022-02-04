@@ -173,5 +173,16 @@ void deleteAtHead(){
 }
 
 void deleteAtIndex(int index){
-    printf("%d", index);
+    if(myLinkedList.size<1) return;
+    if(index<0 || index>myLinkedList.size-1) { printf("Invalid Index\n"); return; } 
+    if(index==0) { deleteAtHead(); return;}
+    if(index==myLinkedList.size-1) { deleteAtTail(); return; }
+
+    struct Node* temp = myLinkedList.head;
+    for (int i = 0; i < index-1; i++) temp = temp->next;
+    struct Node* deleted = temp->next;
+    temp->next = temp->next->next;
+    free(deleted);
+
+    myLinkedList.size--;
 }
