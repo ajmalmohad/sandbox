@@ -7,16 +7,26 @@
 using namespace std;
 typedef long long ll;
 
+
 void solve(){
-    ll n;
-    cin>>n;
+    int count = 0;
+    unordered_map<int,bool> record;
+    for (int i = 0; i < 4; i++){
+        int n;
+        cin>>n;
+        if(!record[n]){
+            count++;
+            record[n]=true;
+        }
+    }
+
+    cout<<4 - count<<'\n';
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(0);
     int t=1;
-    cin>>t;
     while(t--) solve();
     return 0;
 }
