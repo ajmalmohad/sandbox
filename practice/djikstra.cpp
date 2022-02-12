@@ -43,9 +43,9 @@ int main(){
         node = lowestnode(costs, processed);
     }
 
-
+    cout<<"Costs : ";
     for (auto cost : costs){
-        cout<<cost.first<<" : "<<cost.second<<"\n";
+        cout<<"[ "<<cost.first<<":"<<cost.second<<" ] ";
     }
     
     string answer = "F";
@@ -55,7 +55,7 @@ int main(){
         child = parents[child];
     }
 
-    cout<<"Path : ";
+    cout<<"\nPath : ";
     for (int i=answer.size()-1; i>=0; i--){
         cout<<answer[i];
         if(i!= 0) cout<<" -> ";
