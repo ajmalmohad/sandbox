@@ -8,6 +8,8 @@ string lowestnode(unordered_map<string,int> &costs, vector<string> &processed);
 
 int main(){
 
+    //Finding Shortest Path from 'S' to 'F'
+
     unordered_map<string,unordered_map<string, int>> graph;
     graph["S"] = {make_pair("A", 6), make_pair("B", 2)};
     graph["A"] = {make_pair("F", 1)};
@@ -48,6 +50,7 @@ int main(){
         cout<<"[ "<<cost.first<<":"<<cost.second<<" ] ";
     }
     
+    //'F' is the final Destination
     string answer = "F";
     string child = "F";
     while(parents[child] != ""){
