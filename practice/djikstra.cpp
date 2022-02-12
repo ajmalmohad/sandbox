@@ -4,30 +4,35 @@
 
 using namespace std;
 
-string lowestnode(unordered_map<string,int> &costs, vector<string> &processed);
+string lowestnode(unordered_map<string,int> &costs, unordered_map<string,bool> &processed);
 
 int main(){
 
     //Finding Shortest Path from 'S' to 'F'
 
     unordered_map<string,unordered_map<string, int>> graph;
-    graph["S"] = {make_pair("A", 6), make_pair("B", 2)};
-    graph["A"] = {make_pair("F", 1)};
-    graph["B"] = {make_pair("A", 3), make_pair("F", 5)};
+    graph["S"] = {make_pair("A", 5), make_pair("D", 2)};
+    graph["A"] = {make_pair("B", 4),make_pair("C", 2)};
+    graph["B"] = {make_pair("F", 3), make_pair("C", 6)};
+    graph["C"] = {make_pair("F", 1)};
+    graph["D"] = {make_pair("A", 8), make_pair("C", 7)};
     graph["F"] = {};
 
     unordered_map<string, int> costs;
-    costs["A"] = 6;
-    costs["B"] = 2;
+    costs["A"] = 5;
+    costs["D"] = 2;
+    costs["B"] = INT_MAX;
+    costs["C"] = INT_MAX;
     costs["F"] = INT_MAX;
 
     unordered_map<string, string> parents;
     parents["A"] = "S";
-    parents["B"] = "S";
+    parents["D"] = "S";
+    parents["B"] = "None";
+    parents["C"] = "None";
     parents["F"] = "None";
 
-    vector<string> processed;
-    processed.reserve(4);
+    unordered_map<string,bool> processed;
 
     string node = lowestnode(costs, processed);
     while(node != ""){
@@ -41,7 +46,7 @@ int main(){
                 parents[neighbour.first] = node;
             }
         }
-        processed.push_back(node);
+        processed[node] = true;
         node = lowestnode(costs, processed);
     }
 
@@ -66,18 +71,12 @@ int main(){
 
 }
 
-string lowestnode(unordered_map<string,int> &costs, vector<string> &processed){
+string lowestnode(unordered_map<string,int> &costs, unordered_map<string,bool> &processed){
     string minnode = "";
     int minvalue = INT_MAX;
     for (auto node : costs){
-        int flag = 0;
-        for (auto visited : processed){
-            if(node.first == visited){
-                flag = 1;
-                break;
-            }
-        }
-        if(flag) continue;
+        if(processed[node.first]) continue;
+        
         if(minvalue > node.second){
             minvalue = node.second;
             minnode = node.first;
