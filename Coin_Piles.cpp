@@ -2,16 +2,15 @@
 using namespace std;
 typedef long long ll;
 
-void solve();
+
+void solve(){
+    ll a=0,b=0;
+    cin>>a>>b;
+}
 
 int main(){
     int t=1;
     cin>>t;
     while(t--) solve();
     return 0;
-}
-
-void solve(){
-    int a,b;
-    cin>>a>>b;
 }
