@@ -6,14 +6,13 @@
 #include<algorithm>
 using namespace std;
 typedef long long ll;
+typedef long double ld;
 
 void solve(){
     ll n,m,a,b;
     cin>>n>>m>>a>>b;
     ll count = 0;
 
-
-    cout<<count<<'\n';
 }
 
 int main(){
