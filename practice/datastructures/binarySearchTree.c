@@ -44,11 +44,18 @@ void postorder(struct Node* node){
     printf("%d ", node->data);
 }
 
+void search(struct Node* node, int value){
+    if(node==NULL) printf("\n%d not found\n", value);
+    else if(value == node->data) printf("\n%d is found\n", value);
+    else if(value < node->data) search(node->left, value);
+    else if(value > node->data) search(node->right, value);
+}
+
 int main(){
     int choice, value;
     do
     {
-        printf("\n1.Insert\n2.Traverse\n3.Exit\n");
+        printf("\n1.Insert\n2.Traverse\n3.Search\n4.Exit\n");
         printf("Enter your Choice :");
         scanf("%d", &choice);
         switch (choice){
@@ -67,11 +74,16 @@ int main(){
             printf("\n");
             break;
         case 3:
+            printf("Enter Value:");
+            scanf("%d", &value);
+            search(root, value);
+            break;
+        case 4:
             printf("\nExit\n");
             break;
         default:
             break;
         }
-    } while (choice != 3);
+    } while (choice != 4);
     
 }
