@@ -14,6 +14,7 @@ struct Node* makeNode(int value){
     newnode->data = value;
     newnode->left = NULL;
     newnode->right = NULL;
+    return newnode;
 }
 
 struct Node* insert(struct Node* node, int value){
