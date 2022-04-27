@@ -57,6 +57,26 @@ void insertAtPosition(int element, int index){
     }
 }
 
+void deleteAtHead(){
+    if(myLinkedlist.head==NULL) printf("\nUnderflow\n");
+    else myLinkedlist.head = myLinkedlist.head->next;
+
+    if(myLinkedlist.head == NULL) myLinkedlist.tail = NULL;
+}
+
+void deleteAtTail(){
+    if(myLinkedlist.head==NULL) printf("\nUnderflow\n");
+    else if(myLinkedlist.head->next==NULL){
+        myLinkedlist.head = NULL;
+        myLinkedlist.tail = NULL;
+    }else{
+        struct Node* temp = myLinkedlist.head;
+        while(temp->next->next != NULL) temp = temp->next;
+        temp->next = NULL;
+        myLinkedlist.tail = temp;
+    }
+}
+
 void display(){
     if(myLinkedlist.head == NULL) printf("Empty");
     else{
@@ -77,6 +97,7 @@ int main(){
     int choice=0, element, index;
     do{
         printf("1.Exit \n2.Insert at Head \n3.Insert at Tail \n4.Display\n5.Insert at Index\n");
+        printf("6.Delete at Head\n7.Delete at Tail\n");
         scanf("%d", &choice);
         switch (choice){
             case 1: printf("Exitted\n");
@@ -100,6 +121,12 @@ int main(){
                     printf("\nEnter Index to be inserted: ");
                     scanf("%d",&index);
                     insertAtPosition(element, index);
+                    break;
+            case 6:
+                    deleteAtHead();
+                    break;
+            case 7:
+                    deleteAtTail();
                     break;
             default:
                     printf("\nInvalid Option\n");
