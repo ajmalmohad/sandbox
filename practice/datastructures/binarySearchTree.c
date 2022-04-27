@@ -24,6 +24,28 @@ struct Node* insert(struct Node* node, int value){
     return node;
 }
 
+struct Node* findMin(struct Node* node){
+	if(node->left==NULL) return node;
+    return findMin(node->left);
+}
+
+struct Node* delete(struct Node* node, int value){
+    if(node==NULL) return node;
+    else if(value < node->data) node->left = delete(node->left,value);
+    else if(value > node->data) node->right = delete(node->right,value);
+    else{
+        if(node->left==NULL && node->right==NULL) node = NULL;
+        else if(node->left == NULL) node = node->right;
+        else if(node->right == NULL) node = node->left;
+        else{
+            struct Node* temp = findMin(node->right);
+            node->data = temp->data;
+            node->right = delete(node->right, temp->data);
+        }
+    }
+    return node;
+}
+
 void inorder(struct Node* node){
     if(node==NULL) return;
     inorder(node->left);
@@ -56,7 +78,7 @@ int main(){
     int choice, value;
     do
     {
-        printf("\n1.Insert\n2.Traverse\n3.Search\n4.Exit\n");
+        printf("\n1.Insert\n2.Delete\n3.Traverse\n4.Search\n5.Exit\n");
         printf("Enter your Choice :");
         scanf("%d", &choice);
         switch (choice){
@@ -66,6 +88,11 @@ int main(){
             root = insert(root, value);
             break;
         case 2:
+            printf("Enter Value:");
+            scanf("%d", &value);
+            root = delete(root,value);
+            break;
+        case 3:
             printf("\nInorder: ");
             inorder(root);
             printf("\nPreorder: ");
@@ -74,17 +101,17 @@ int main(){
             postorder(root);
             printf("\n");
             break;
-        case 3:
+        case 4:
             printf("Enter Value:");
             scanf("%d", &value);
             search(root, value);
             break;
-        case 4:
+        case 5:
             printf("\nExit\n");
             break;
         default:
             break;
         }
-    } while (choice != 4);
+    } while (choice != 5);
     
 }
