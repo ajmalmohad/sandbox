@@ -8,7 +8,7 @@ vector<int> GetHIndexScore(vector<int> citations_per_paper) {
   
   // TODO: Calculate and return h-index score for each paper.
   return h_index;
-}
+} 
 
 int main() {
   int tests;
