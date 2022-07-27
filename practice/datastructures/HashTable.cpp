@@ -20,6 +20,12 @@ int hasher(string str)
 
 void add(string key, string value)
 {
+    if (key == "none")
+    {
+        cout << "none is reserved key"
+             << "\n";
+        return;
+    }
     int hashed = hasher(key);
     int current = hashed;
     while (hash_table[current].key != "")
@@ -28,6 +34,13 @@ void add(string key, string value)
         {
             hash_table[current].value = value;
             cout << "Added Duplicate Key! \n";
+            return;
+        }
+        if (hash_table[current].key == "none")
+        {
+            hash_table[current].key = key;
+            hash_table[current].value = value;
+            cout << "Added Successfully in None! \n";
             return;
         }
         current = (current + 1) % capacity;
@@ -52,11 +65,45 @@ void get(string key)
 
 void delete_key(string key)
 {
+    if (key == "none")
+    {
+        cout << "none is reserved key"
+             << "\n";
+        return;
+    }
+    int hashed = hasher(key);
+    int current = hashed;
+
+    if (hash_table[current].key == "")
+    {
+        cout << "Not Found \n";
+        return;
+    }
+
+    while (hash_table[current].key != key)
+    {
+        current = (current + 1) % capacity;
+        if (hash_table[current].key == key)
+        {
+            hash_table[current].key = "none";
+            hash_table[current].value = "none";
+            cout << "Deleted Key Values! \n";
+            return;
+        }
+        if (current == hashed || hash_table[current].key == "")
+        {
+            cout << "Not Found \n";
+            return;
+        }
+    }
+    hash_table[current].key = "none";
+    hash_table[current].value = "none";
+    cout << "Deleted Key Values! \n";
 }
 
 void display()
 {
-    int i=0;
+    int i = 0;
     cout << "\n";
     for (node current : hash_table)
     {
