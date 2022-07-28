@@ -18,12 +18,45 @@ int hasher(string str)
     return value % capacity;
 }
 
+int check(string key)
+{
+    if (key == "none")
+    {
+        cout << "none is reserved key\n";
+        return 0;
+    }
+    int hashed = hasher(key);
+    int current = hashed;
+
+    if (hash_table[current].key == "")
+    {
+        cout << "Not Found \n";
+        return 0;
+    }
+
+    while (hash_table[current].key != key)
+    {
+        current = (current + 1) % capacity;
+        if (hash_table[current].key == key)
+        {
+            cout << "Found Key Values! \n";
+            return 1;
+        }
+        if (current == hashed || hash_table[current].key == "")
+        {
+            cout << "Not Found \n";
+            return 0;
+        }
+    }
+    cout << "Found Key Values! \n";
+    return 1;
+}
+
 void add(string key, string value)
 {
     if (key == "none")
     {
-        cout << "none is reserved key"
-             << "\n";
+        cout << "none is reserved key\n";
         return;
     }
     int hashed = hasher(key);
@@ -38,10 +71,13 @@ void add(string key, string value)
         }
         if (hash_table[current].key == "none")
         {
-            hash_table[current].key = key;
-            hash_table[current].value = value;
-            cout << "Added Successfully in None! \n";
-            return;
+            if (!check(key))
+            {
+                hash_table[current].key = key;
+                hash_table[current].value = value;
+                cout << "Added Successfully in None! \n";
+                return;
+            }
         }
         current = (current + 1) % capacity;
         if (current == hashed)
@@ -55,20 +91,44 @@ void add(string key, string value)
     cout << "Added Successfully! \n";
 }
 
-void check(string key)
-{
-}
-
 void get(string key)
 {
+    if (key == "none")
+    {
+        cout << "none is reserved key\n";
+        return;
+    }
+    int hashed = hasher(key);
+    int current = hashed;
+
+    if (hash_table[current].key == "")
+    {
+        cout << "Not Found \n";
+        return;
+    }
+
+    while (hash_table[current].key != key)
+    {
+        current = (current + 1) % capacity;
+        if (hash_table[current].key == key)
+        {
+            cout << "Found: " << hash_table[current].key << ":" << hash_table[current].value << "\n";
+            return;
+        }
+        if (current == hashed || hash_table[current].key == "")
+        {
+            cout << "Not Found \n";
+            return;
+        }
+    }
+    cout << "Found: " << hash_table[current].key << ":" << hash_table[current].value << "\n";
 }
 
 void delete_key(string key)
 {
     if (key == "none")
     {
-        cout << "none is reserved key"
-             << "\n";
+        cout << "none is reserved key\n";
         return;
     }
     int hashed = hasher(key);
