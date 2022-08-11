@@ -133,6 +133,28 @@ int findSuccessorData(Node* root, int value){
     else return successor->data;
 }
 
+
+Node* deleteVal(Node* root, int value){
+    if(root == NULL) return root;
+    if(value < root->data) root->left =  deleteVal(root->left, value);
+    else if(value > root->data) root->right = deleteVal(root->right, value);
+    else{
+        if(root->left == NULL && root->right == NULL){
+            delete root;
+            root = NULL;
+        }else if(root->right == NULL){
+            root = root->left;
+        }else if(root->left == NULL){
+            root = root->right;
+        }else{
+            int val = getMin(root->right);
+            root->right = deleteVal(root->right, val);
+            root->data = val;
+        }
+    }
+    return root;
+}
+
 int main(){
     Node* root = NULL;
     root = insert(root, 20);
@@ -147,6 +169,7 @@ int main(){
     root = insert(root, 21);
     root = insert(root, 9);
     root = insert(root, -21);
+    root = deleteVal(root, -21);
     cout<<"\nInorder :"; inOrder(root);
     cout<<"\nPreOrder :"; preOrder(root);
     cout<<"\nPostOrder :"; postOrder(root);
