@@ -83,6 +83,11 @@ int getMin(Node* root){
     return getMin(root->left);
 }
 
+Node* getMinNode(Node* root){
+    if(root->left == NULL) return root;
+    return getMinNode(root->left);
+}
+
 int getMax(Node* root){
     if(root->right == NULL) return root->data;
     return getMax(root->right);
@@ -99,6 +104,33 @@ bool isBSTHelper(Node* root, int lower, int upper){
 
 bool isBST(Node* root){
     return isBSTHelper(root, INT32_MIN, INT32_MAX);
+}
+
+Node* findSuccessor(Node* root, int value){
+    if(!isInTree(root, value)) return NULL;
+    Node* current = getNode(root, value);
+    Node* ancestor = root;
+    Node* successor = NULL;;
+
+    if(current->right != NULL){
+        return getMinNode(current->right);
+    }else{
+        while(ancestor != current){
+            if(current->data < ancestor->data){
+                successor = ancestor;
+                ancestor = ancestor->left;
+            }else{
+                ancestor = ancestor->right;
+            }
+        }
+        return successor;
+    }
+}
+
+int findSuccessorData(Node* root, int value){
+    Node* successor = findSuccessor(root, value);
+    if(successor==NULL) return -1;
+    else return successor->data;
 }
 
 int main(){
@@ -123,5 +155,5 @@ int main(){
     cout<<"\nMinimum Value: "<<getMin(root);
     cout<<"\nMaximum Value: "<<getMax(root);
     cout<<"\nIs this a BST ? "<<isBST(root);
-    cout<<"\n";
+    cout<<"\nSuccessor of 6: "<<findSuccessorData(root, 6);
 }
