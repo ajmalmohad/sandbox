@@ -155,6 +155,13 @@ Node* deleteVal(Node* root, int value){
     return root;
 }
 
+int getHeightByEdges(Node* root){
+    if(root == NULL) return -1;
+    int left = getHeightByEdges(root->left);
+    int right = getHeightByEdges(root->right);
+    return max(left, right) + 1;
+}
+
 int main(){
     Node* root = NULL;
     root = insert(root, 20);
@@ -179,4 +186,5 @@ int main(){
     cout<<"\nMaximum Value: "<<getMax(root);
     cout<<"\nIs this a BST ? "<<isBST(root);
     cout<<"\nSuccessor of 6: "<<findSuccessorData(root, 6);
+    cout<<"\nHeight of Tree: "<<getHeightByEdges(root);
 }
