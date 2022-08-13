@@ -89,19 +89,19 @@ int extractMax(vector<int>& arr){
 
 void extractAllMax(vector<int>& arr){
     cout<<"\nHeap Extraction: ";
-    int n = arr.size();
+    int n = getSize(arr);
     for (int i = 0; i < n; i++) cout<<extractMax(arr)<<" ";
     cout<<"\n";
 }
 
 void heapify(vector<int>& arr){
-    for (int i = arr.size()/2; i >=0 ; i--){
+    for (int i = getSize(arr)/2; i >=0 ; i--){
         siftDown(arr, i);
     }
 }
 
 int main(){
-    vector<int> heap = {10,20,60,5,50};
+    vector<int> heap = {10,20,60,5,50,100};
     heapify(heap);
     display(heap);
     extractAllMax(heap);
