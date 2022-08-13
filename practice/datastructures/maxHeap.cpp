@@ -41,6 +41,15 @@ void insert(int value){
     siftUp(heap.size()-1);
 }
 
+
+bool isEmpty(){
+    return (heap.size() == 0);
+}
+
+int getMax(){
+    return isEmpty() ? 0 : heap[0];
+}
+
 void display(){
     cout<<"\n";
     for(int elem: heap) cout<<elem<<" ";
@@ -54,4 +63,6 @@ int main(){
     insert(5);
     insert(50);
     display();
+    cout<<"\nMax is: "<<getMax();
+    cout<<"\nIs Empty? "<<isEmpty();
 }
