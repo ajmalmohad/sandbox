@@ -2,17 +2,15 @@
 #include <vector>
 using namespace std;
 
-vector<int> heap;
-
-void swap(int a, int b){
-        int temp = heap[a];
-        heap[a] = heap[b];
-        heap[b] = temp;
+void swap(vector<int>& arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
 }
 
-void display(){
-    cout<<"\n";
-    for(int elem: heap) cout<<elem<<" ";
+void display(vector<int>& arr){
+    cout<<"\nHeap Displaying: ";
+    for(int elem: arr) cout<<elem<<" ";
     cout<<"\n";
 }
 
@@ -28,24 +26,24 @@ int right(int index){
     return (2*index)+2;
 }
 
-int getSize(){
-    return heap.size();
+int getSize(vector<int>& arr){
+    return arr.size();
 }
 
-bool isEmpty(){
-    return (getSize() == 0);
+bool isEmpty(vector<int>& arr){
+    return (getSize(arr) == 0);
 }
 
-int getMax(){
-    return isEmpty() ? 0 : heap[0];
+int getMax(vector<int>& arr){
+    return isEmpty(arr) ? 0 : arr[0];
 }
 
-void siftUp(int index){
+void siftUp(vector<int>& arr, int index){
     int elementIndex = index;
     int parentIndex = (elementIndex - 1)/2;
     while(parentIndex >= 0){
-        if(heap[elementIndex] > heap[parentIndex]){
-            swap(elementIndex, parentIndex);
+        if(arr[elementIndex] > arr[parentIndex]){
+            swap(arr, elementIndex, parentIndex);
             elementIndex = parentIndex;
             parentIndex = parent(elementIndex);
         }else{
@@ -54,19 +52,19 @@ void siftUp(int index){
     }
 }
 
-void siftDown(int index){
+void siftDown(vector<int>& arr, int index){
     int leftIdx = left(index);
     int rightIdx = right(index);
-    int n = getSize();
+    int n = getSize(arr);
     while(index<n){
         int maxIdx;
-        if(leftIdx<n && rightIdx<n) maxIdx = heap[rightIdx] > heap[leftIdx] ? rightIdx : leftIdx;
+        if(leftIdx<n && rightIdx<n) maxIdx = arr[rightIdx] > arr[leftIdx] ? rightIdx : leftIdx;
         else if(leftIdx<n) maxIdx = leftIdx;
         else if(rightIdx<n) maxIdx = rightIdx;
         else break;
         
-        if(heap[maxIdx] > heap[index]){ 
-            swap(index, maxIdx);
+        if(arr[maxIdx] > arr[index]){ 
+            swap(arr, index, maxIdx);
             index = maxIdx;
             leftIdx = left(index);
             rightIdx = right(index);
@@ -75,32 +73,36 @@ void siftDown(int index){
     }
 }
 
-void insert(int value){
-    heap.push_back(value);
-    siftUp(getSize()-1);
+void insert(vector<int>& arr, int value){
+    arr.push_back(value);
+    siftUp(arr, getSize(arr)-1);
 }
 
-int extractMax(){
-    if(isEmpty()) return 0;
-    int maximum = heap[0];
-    swap(0, getSize()-1);
-    heap.pop_back();
-    siftDown(0);
+int extractMax(vector<int>& arr){
+    if(isEmpty(arr)) return 0;
+    int maximum = arr[0];
+    swap(arr, 0, getSize(arr)-1);
+    arr.pop_back();
+    siftDown(arr, 0);
     return maximum;
 }
 
+void extractAllMax(vector<int>& arr){
+    cout<<"\nHeap Extraction: ";
+    int n = arr.size();
+    for (int i = 0; i < n; i++) cout<<extractMax(arr)<<" ";
+    cout<<"\n";
+}
+
+void heapify(vector<int>& arr){
+    for (int i = arr.size()/2; i >=0 ; i--){
+        siftDown(arr, i);
+    }
+}
+
 int main(){
-    insert(10);
-    insert(20);
-    insert(60);
-    insert(5);
-    insert(50);
-    display();
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
-    cout<<extractMax()<<" ";
+    vector<int> heap = {10,20,60,5,50};
+    heapify(heap);
+    display(heap);
+    extractAllMax(heap);
 }
