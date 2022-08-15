@@ -100,10 +100,26 @@ void heapify(vector<int>& arr, int& extracted){
     }
 }
 
+void deleteElement(vector<int>& arr, int value){
+    int i, flag=true;
+    for(i=0; i<arr.size(); i++){
+        if(arr[i]==value) break;
+        else if(i==arr.size()-1) flag=false;
+    }
+    if(flag){
+        int extracted = 0;
+        swap(arr,i,arr.size()-1);
+        arr.pop_back();
+        heapify(arr, extracted);
+    }
+}
+
 int main(){
     vector<int> heap = {10,20,60,5,50,100};
     int extracted = 0;
     heapify(heap, extracted);
+    display(heap);
+    deleteElement(heap, 60);
     display(heap);
     heapSort(heap, extracted);
     display(heap);
