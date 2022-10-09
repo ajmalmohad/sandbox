@@ -4,8 +4,9 @@
 #include <sys/types.h>
 
 int main(){
+        int pid;
         printf("Parent Process Started\n");
-        int pid = fork();
+        pid=fork();
         if(pid==0){
                 printf("Child Process Started\n");
                 char* args[] = {"/bin/ls", "-l", 0};
@@ -13,6 +14,5 @@ int main(){
         }else{
                 wait(0);
                 printf("Parent Process Ended\n");
-                exit(0);
         }
 }
