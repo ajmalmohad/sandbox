@@ -23,7 +23,7 @@ int main(){
     int count = 0;
     for (int i = 0; i < m; i++){
         allocated[i]=-1;
-        int difference = blocks[i];
+        int difference = __INT_MAX__;
         for (int j = 0; j < n; j++){
             if(process[i]<=blocks[j]){
                 if(blocks[j]-process[i]<difference) {
