@@ -6,7 +6,7 @@ int main() {
     cin >> l >> r >> x >> y >> k;
     for (int i = x; i <= y; i++) {
         float experience = k * i;
-        if ((experience == floor(experience)) && experience >= l && experience <= r) {
+        if (experience >= l && experience <= r) {
             cout << "YES\n";
             return 0;
         }
