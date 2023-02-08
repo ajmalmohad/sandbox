@@ -25,7 +25,7 @@ void passOne(char label[10], char opcode[10], char operand[10], char code[10], c
         locctr = start;
 
         // write to output file (additional tab space as start will not have any locctr)
-        fprintf(fp4, "\t\t%s\t%s\t%s\n", label, opcode, operand);
+        fprintf(fp4, "\t%s\t%s\t%s\n", label, opcode, operand);
 
         // read next line  
         fscanf(fp1, "%s\t%s\t%s", label, opcode, operand);
