@@ -2,189 +2,178 @@
 #include <stdlib.h>
 #include <string.h>
 
-void display();
+void display(char filename[10]) {
+
+    // open the file
+    printf("\nThe contents of %s :\n\n", filename);
+    FILE* fp = fopen(filename, "r");
+
+    // read and print all characters
+    char str = fgetc(fp);
+    while (str != EOF) {
+        printf("%c", str);
+        str = fgetc(fp);
+    }
+
+    // close the file
+    fclose(fp);
+}
 
 int main()
 {
-    char a[10], ad[10], label[10], opcode[10], operand[10], symbol[10];
-    int start, diff, i, address, add, len, actual_len, finaddr, prevaddr, j = 0;
-    char mnemonic[15][15] = {"LDA", "STA", "LDCH", "STCH"};
-    char code[15][15] = {"33", "44", "53", "57"};
+    char label[10], opcode[10], operand[10], symbol[10];
+    int start, diff, i, len, j = 0;
 
-    FILE *fp1, *fp2, *fp3, *fp4;
-    fp1 = fopen("output.txt", "w");
+    // OPTAB
+    char mnemonic[15][15] = { "LDA", "STA", "LDCH", "STCH" };
+    char code[15][15] = { "33", "44", "53", "57" };
+
+    // file pointers
+    FILE* fp1, * fp2, * fp3, * fp4;
+
+    // input files
     fp2 = fopen("symtab.txt", "r");
     fp3 = fopen("intermediate.txt", "r");
+
+    // output files
+    fp1 = fopen("output.txt", "w");
     fp4 = fopen("objcode.txt", "w");
 
+    // read first line ( start line has no address )
     fscanf(fp3, "%s\t%s\t%s", label, opcode, operand);
 
+    // find final address ( address where end is ) and the one before it
+    int finaladdr, prevaddr, address;
     while (strcmp(opcode, "END") != 0)
     {
         prevaddr = address;
         fscanf(fp3, "%d%s%s%s", &address, label, opcode, operand);
     }
-    finaddr = address;
-    
-    fclose(fp3);
-    fp3 = fopen("intermediate.txt", "r");
+    finaladdr = address;
 
+    // reopen intermediate file
+    rewind(fp3);
+
+    // read first line ( start line has no address )
     fscanf(fp3, "\t%s\t%s\t%s", label, opcode, operand);
+
+    // write the header record to object code
     if (strcmp(opcode, "START") == 0)
     {
+
+        // write first line to output file
         fprintf(fp1, "\t%s\t%s\t%s\n", label, opcode, operand);
-        fprintf(fp4, "H^%s^00%s^00%d\n", label, operand, finaddr);
+
+        // write header record with label, starting address and final address
+        fprintf(fp4, "H^%s^00%s^00%d\n", label, operand, finaladdr);
+
+        // read next input line from intermediate file
         fscanf(fp3, "%d%s%s%s", &address, label, opcode, operand);
+
+        // start the first text record
+        // calculate difference from address before the END and current line ( starting address )
         start = address;
         diff = prevaddr - start;
         fprintf(fp4, "T^00%d^%d", address, diff);
+
     }
 
+    // iterate while not end
     while (strcmp(opcode, "END") != 0)
     {
+
+        // if byte then find corresponding ASCII of operands
         if (strcmp(opcode, "BYTE") == 0)
         {
+            // write to output file
             fprintf(fp1, "%d\t%s\t%s\t%s\t", address, label, opcode, operand);
+
+            char buffer[10];
             len = strlen(operand);
-            actual_len = len - 3;
             fprintf(fp4, "^");
-            for (i = 2; i < (actual_len + 2); i++)
-            {   
-                itoa(operand[i], ad, 16);
-                fprintf(fp1, "%s", ad);
-                fprintf(fp4, "%s", ad);
+
+            // convert whole string to ASCII
+            for (i = 2; i < len - 1; i++)
+            {
+                // convert each character of operand to ASCII
+                itoa(operand[i], buffer, 16);
+
+                // write the ASCII to output file and object code file
+                fprintf(fp1, "%s", buffer);
+                fprintf(fp4, "%s", buffer);
             }
+
+            // goto new line in the output file
             fprintf(fp1, "\n");
         }
 
+        // if word then just convert operands to decimal 
         else if (strcmp(opcode, "WORD") == 0)
         {
-            len = strlen(operand);
-            itoa(atoi(operand), a, 10);
-            fprintf(fp1, "%d\t%s\t%s\t%s\t00000%s\n", address, label, opcode, operand, a);
-            fprintf(fp4, "^00000%s", a);
+            char buffer[10];
+
+            // convert operand from hex to decimal 
+            itoa(atoi(operand), buffer, 10);
+
+            // write to output file and object code file
+            fprintf(fp1, "%d\t%s\t%s\t%s\t00000%s\n", address, label, opcode, operand, buffer);
+            fprintf(fp4, "^00000%s", buffer);
         }
 
-        else if ((strcmp(opcode, "RESB") == 0) || (strcmp(opcode, "RESW") == 0)) {
+        // if RESB or RESW do not write to object file, directly write it to output file
+        else if ((strcmp(opcode, "RESB") == 0) || (strcmp(opcode, "RESW") == 0))
+        {
             fprintf(fp1, "%d\t%s\t%s\t%s\n", address, label, opcode, operand);
         }
 
         else
-        {
-            while (strcmp(opcode, mnemonic[j]) != 0)
-                j++;
+        {   
+            // traverse the optable
+            while (strcmp(opcode, mnemonic[j]) != 0) j++;
+
+            // if operand is copy just write it to output file (along with mneumonic's opcode)
+            // no need to write to the object file
             if (strcmp(operand, "COPY") == 0)
+            {
                 fprintf(fp1, "%d\t%s\t%s\t%s\t%s0000\n", address, label, opcode, operand, code[j]);
+            }
+
+            // search the symbol table and write opcode with address to where symbol is directed
             else
             {
+
+                // search through the symbol table for symbol and read corresponding address
+                int symboladdr;
                 rewind(fp2);
-                fscanf(fp2, "%s%d", symbol, &add);
-                while (strcmp(operand, symbol) != 0)
-                    fscanf(fp2, "%s%d", symbol, &add);
-                fprintf(fp1, "%d\t%s\t%s\t%s\t%s%d\n", address, label, opcode, operand, code[j], add);
-                fprintf(fp4, "^%s%d", code[j], add);
+                fscanf(fp2, "%s%d", symbol, &symboladdr);
+                while (strcmp(operand, symbol) != 0) fscanf(fp2, "%s%d", symbol, &symboladdr);
+
+                // write to the output file and the object code file
+                fprintf(fp1, "%d\t%s\t%s\t%s\t%s%d\n", address, label, opcode, operand, code[j], symboladdr);
+                fprintf(fp4, "^%s%d", code[j], symboladdr);
+
             }
+
         }
 
+        // read the next line from intermediate file ( END line )
         fscanf(fp3, "%d%s%s%s", &address, label, opcode, operand);
     }
 
+    // write the end line tom output file and write the end record
     fprintf(fp1, "%d\t%s\t%s\t%s\n", address, label, opcode, operand);
     fprintf(fp4, "\nE^00%d", start);
-    
+
+    // close all the files
     fclose(fp4);
     fclose(fp3);
     fclose(fp2);
     fclose(fp1);
 
-    display();
+    // display all the files
+    display("intermediate.txt");
+    display("output.txt");
+    display("objcode.txt");
 
     return 0;
 }
-
-void display() {
-    char ch;
-    FILE *fp1, *fp2, *fp3, *fp4;
-
-    printf("\nIntermediate file is converted into object code");
-
-    printf("\n\nThe contents of Intermediate file:\n\n");
-    fp3 = fopen("intermediate.txt", "r");
-    ch = fgetc(fp3);
-    while (ch != EOF)
-    {
-        printf("%c", ch);
-        ch = fgetc(fp3);
-    }
-    fclose(fp3);
-
-    printf("\n\nThe contents of Symbol Table :\n\n");
-    fp2 = fopen("symtab.txt", "r");
-    ch = fgetc(fp2);
-    while (ch != EOF)
-    {
-        printf("%c", ch);
-        ch = fgetc(fp2);
-    }
-    fclose(fp2);
-
-    printf("\n\nThe contents of Output file :\n\n");
-    fp1 = fopen("output.txt", "r");
-    ch = fgetc(fp1);
-    while (ch != EOF)
-    {
-        printf("%c", ch);
-        ch = fgetc(fp1);
-    }
-    fclose(fp1);
-
-    printf("\n\nThe contents of Object code file :\n\n");
-    fp4 = fopen("objcode.txt", "r");
-    ch = fgetc(fp4);
-    while (ch != EOF)
-    {
-        printf("%c", ch);
-        ch = fgetc(fp4);
-    }
-    fclose(fp4);
-
-}
-
-/* 
-    intermediate.txt
-    ----------------
-            **      START   2000
-    2000    **      LDA     FIVE
-    2003    **      STA     ALPHA
-    2006    **      LDCH    CHARZ
-    2009    **      STCH    C1
-    2012    ALPHA   RESW    2
-    2018    FIVE    WORD    5
-    2021    CHARZ   BYTE    C'Z'
-    2022    C1      RESB    1
-    2023    **      END     **
-    symtab.txt
-    ----------
-    ALPHA   2012
-    FIVE    2018
-    CHARZ   2021
-    C1      2022
-    -----------------------------
-    output.txt
-    ----------
-            **      START   2000
-    2000    **      LDA     FIVE    332018
-    2003    **      STA     ALPHA   442012
-    2006    **      LDCH    CHARZ   532021
-    2009    **      STCH    C1      572022
-    2012    ALPHA   RESW    2
-    2018    FIVE    WORD    5       000005
-    2021    CHARZ   BYTE    C'Z'    5a
-    2022    C1      RESB    1
-    2023    **      END     **
-    objcode.txt
-    -----------
-    H^**^002000^002023
-    T^002000^22^332018^442012^532021^572022^000005^5a
-    E^002000
-*/
