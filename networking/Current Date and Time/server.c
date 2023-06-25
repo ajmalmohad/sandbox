@@ -23,18 +23,14 @@ int main(){
     setsockopt(welcomeSocket, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));
     bind(welcomeSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
 
-    if(listen(welcomeSocket, 5) == 0){
-        printf("Listening\n");
-    }else{
-        printf("Error");
-    }
-
+    if(listen(welcomeSocket, 5) == 0) printf("Listening\n");
+    else printf("Error");
+    
     addr_size = sizeof serverStorage;
-        
     while(1){
         newSocket = accept(welcomeSocket, (struct sockaddr *)&serverAddr, &addr_size);
         tick = time(NULL);
-        snprintf(buffer, sizeof(buffer), "%s", ctime(&tick));
+        strcpy(buffer, ctime(&tick));
         send(newSocket, buffer, 34, 0);
     }
 
