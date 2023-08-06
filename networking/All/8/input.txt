@@ -1,0 +1,2 @@
+This data is from input.txt
+This data is from input.txt (2)
