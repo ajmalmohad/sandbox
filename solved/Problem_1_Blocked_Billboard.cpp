@@ -6,49 +6,25 @@ typedef long long ll;
 using namespace std;
 const long long mod = 1e9+7;
 
+struct Rect {
+    int x1, y1, x2, y2;
+    int area() { return (x2-x1)*(y2-y1); }
+};
+
+int intersect(Rect p, Rect q) {
+    int xOverlap = min(p.x2, q.x2) - max(p.x1, q.x1);
+    int yOverlap = min(p.y2, q.y2) - max(p.y1, q.y1);
+    if(xOverlap > 0 && yOverlap > 0) return xOverlap*yOverlap;
+    else return 0; 
+}
+
 void solve(){
-    // freopen("billboard.in", "r", stdin);
-    // freopen("billboard.out", "w", stdout);
+    Rect a, b, c;
+    cin>>a.x1>>a.y1>>a.x2>>a.y2;
+    cin>>b.x1>>b.y1>>b.x2>>b.y2;
+    cin>>c.x1>>c.y1>>c.x2>>c.y2;
 
-    vector<int> points(12);
-    for (int i = 0; i < 12; i++) {
-        cin>>points[i];
-        points[i] += 1000;
-    }
-    int count = 0;
-
-    vector<vector<bool>> board(2001, vector<bool>(2001, false));
-    for (int i = points[0]; i < points[2]; i++) {
-        for (int j = points[1]; j < points[3]; j++) {
-            board[i][j] = true;
-        }
-    }
-
-    for (int i = points[4]; i < points[6]; i++) {
-        for (int j = points[5]; j < points[7]; j++) {
-            board[i][j] = true;
-        }
-    }
-
-    for (int i = points[8]; i < points[10]; i++) {
-        for (int j = points[9]; j < points[11]; j++) {
-            board[i][j] = false;
-        }
-    }
-
-    for (int i = points[0]; i < points[2]; i++) {
-        for (int j = points[1]; j < points[3]; j++) {
-            if(board[i][j]) count++;
-        }
-    }
-
-    for (int i = points[4]; i < points[6]; i++) {
-        for (int j = points[5]; j < points[7]; j++) {
-            if(board[i][j]) count++;
-        }
-    }
-
-    cout<<count<<"\n";
+    cout<<a.area()+b.area()-intersect(a,c)-intersect(b,c);
 }
 
 int main(){
