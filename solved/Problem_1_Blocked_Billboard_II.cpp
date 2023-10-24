@@ -13,7 +13,7 @@ struct Rect{
     int height() { return (y2 - y1); }
 };
 
-pair<int, int> intersect(Rect a, Rect b) {
+pair<int, int> intersect(Rect &a, Rect &b) {
     int xIntersect = max(0, min(a.x2, b.x2) - max(a.x1, b.x1));
     int yIntersect = max(0, min(a.y2, b.y2) - max(a.y1, b.y1));
     return {xIntersect, yIntersect};
@@ -25,39 +25,38 @@ void solve(){
     Rect lawn, feed;
     cin>>lawn.x1>>lawn.y1>>lawn.x2>>lawn.y2;
     cin>>feed.x1>>feed.y1>>feed.x2>>feed.y2;
-    pair<int, int> intersects = intersect(feed, lawn);
+    pair<int, int> intersects = intersect(lawn, feed);
     // Feed is in front
 
-    // If lawn doesn't intersect
+    // If lawn doesn't intersect with cow feed
     if(intersects.first == 0 || intersects.second == 0){
         cout<<lawn.area()<<"\n";
         return;
     }
 
-    // If lawn is covered by cow feed
-    if(intersects.first == lawn.width() && intersects.second == lawn.height()){
-        cout<<0<<"\n";
-        return;
-    }
-
-    // If lawn intersect halfway on 2 sides
+    // If lawn intersect at corners (we need to cover whole lawn)
     if(intersects.first != lawn.width() && intersects.second != lawn.height()){
         cout<<lawn.area()<<"\n";
         return;
     }
 
-    cout<<lawn.area() - intersects.first*intersects.second;
+    // If lawn is fully covered by cow feed
+    if(intersects.first == lawn.width() && intersects.second == lawn.height()){
+        cout<<0<<"\n";
+        return;
+    }
 
-    // If the width is covered by the feed
-    // Small part of height is covered
-    // if(intersects.first == lawn.width()){
-    //     cout<<lawn.area() - intersects.first*intersects.second;
-    // }
-
-    // if(intersects.first == lawn.height()){
-        
-    // }
-
+    // If lawn is in any 4 side covering a side part
+    if( (lawn.y2 < feed.y2 && lawn.y1 <= feed.y1) ||
+        (lawn.y1 > feed.y1 && lawn.y2 >= feed.y2) ||
+        (lawn.x2 < feed.x2 && lawn.x1 <= feed.x1) || 
+        (lawn.x1 > feed.x1 && lawn.x2 >= feed.x2)){
+        cout<<lawn.area() - intersects.first*intersects.second;
+    }else{
+        // If lawn foes over the feed leaving 2 sides open above and below 
+        // (or left and right)
+        cout<<lawn.area();
+    }
 }
 
 int main(){
