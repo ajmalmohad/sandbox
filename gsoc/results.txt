@@ -1,0 +1,249 @@
+Xwiki  -  6
+Purr data  -  6
+Incf  -  6
+Librehealth  -  6
+National resource for network biology (nrnb)  -  6
+Open chemistry  -  6
+Openmrs  -  6
+Openstreetmap  -  6
+Openwisp  -  6
+Owasp foundation  -  6
+Sugar labs  -  6
+Wikimedia foundation  -  6
+Freetype  -  6
+Rocket.chat  -  5
+Internet archive  -  5
+Oppia foundation  -  5
+R project for statistical computing  -  5
+Zulip  -  5
+Submitty  -  5
+Git  -  5
+Haskell.org  -  5
+Brl-cad  -  5
+Circuitverse.org  -  5
+Dbpedia  -  5
+Mit app inventor  -  5
+Opencv  -  5
+Numfocus  -  4
+Public lab  -  4
+Jderobot - universidad rey juan carlos  -  4
+Syslog-ng  -  4
+Processing foundation  -  4
+Aossie  -  4
+Jenkins project  -  3
+Webpack  -  3
+Software and computational systems lab at lmu munich  -  3
+Drupal  -  3
+Freifunk  -  3
+Joomla!  -  3
+Mozilla  -  3
+Open bioinformatics foundation  -  3
+Strace  -  3
+Fedora project  -  3
+Open roberta  -  3
+Cbioportal for cancer genomics  -  3
+Chaoss  -  3
+Creative commons  -  3
+Debian  -  3
+Kiwix  -  3
+Matrix.org  -  3
+Lablua  -  3
+Gprmax  -  3
+Cuneiform digital library initiative (cdli)  -  3
+Postman  -  3
+Orcasound  -  3
+Camicroscope  -  3
+Casbin  -  3
+Opensuse project  -  3
+Ceph  -  3
+Aboutcode  -  3
+Chromium  -  3
+International catrobat association  -  3
+Learning equality  -  3
+The palisadoes foundation  -  3
+The netbsd foundation  -  3
+The enigma team  -  3
+Rizin  -  3
+Jitsi  -  2
+The processing foundation  -  2
+Intermine  -  2
+Neovim  -  2
+Clips  -  2
+University of antwerp  -  2
+Aimacode  -  2
+Amahi  -  2
+Computational biology @ university of nebraska-lincoln  -  2
+Digital impact alliance  -  2
+Fossasia  -  2
+Gnome  -  2
+Inclusive design institute  -  2
+Moodle  -  2
+Performance co-pilot  -  2
+Phpmyadmin  -  2
+The center for connected learning and computer-based modeling  -  2
+The eclipse foundation  -  2
+Ucsc xena  -  2
+Aossie - australian open source software innovation and education  -  2
+Genes  -  2
+Genomes and variation  -  2
+Freebsd  -  2
+Gentoo foundation  -  2
+The java pathfinder team  -  2
+Percona  -  2
+Aboutcode.org  -  2
+Beagleboard.org  -  2
+Civicrm  -  2
+Hydra ecosystem  -  2
+Software heritage  -  2
+Godot engine  -  2
+Macports  -  2
+Kapitan  -  2
+Open genome informatics  -  2
+Accord project  -  2
+Digital impact alliance (dial) at un foundation  -  2
+Fossology  -  2
+Framenet brasil (ufjf)  -  2
+Mggg redistricting lab  -  2
+Mixxx  -  2
+Open bioinformatics foundation (obf)  -  2
+Openastronomy  -  2
+Openmined  -  2
+Freebsd project  -  2
+Mzmine  -  2
+Apertium  -  2
+Joplin  -  2
+Polypheny  -  2
+Grame  -  2
+Jenkins  -  2
+52°north spatial information research gmbh  -  2
+Department of biomedical informatics  -  2
+Emory university  -  2
+Drupal association  -  2
+Gitlab  -  2
+Internet health report  -  2
+Mariadb  -  2
+Mathesar  -  2
+Mayor's office of new urban mechanics  -  2
+Open technologies alliance - gfoss  -  2
+Osgeo (open source geospatial foundation)  -  2
+Plone foundation  -  2
+Postgresql  -  2
+Python software foundation  -  2
+Society for arts and technology (sat)  -  2
+The honeynet project  -  2
+Wagtail  -  2
+Omegaup  -  2
+Jderobot  -  2
+The ns-3 network simulator project  -  2
+Gfoss - open technologies alliance  -  1
+The vega visualization tools by the uw interactive data lab  -  1
+Rspamd  -  1
+Plone  -  1
+52° north initiative for geospatial open source software gmbh  -  1
+Open roberta lab  -  1
+Debian project  -  1
+Beeware project  -  1
+Berkman klein center for internet & society at harvard university  -  1
+Center for research in open source software (cross) at uc santa cruz  -  1
+Chaoss: community health analytics open source software  -  1
+Classical language toolkit  -  1
+Conversations.im  -  1
+Earth science information partners (esip)  -  1
+Languagetool.org  -  1
+Leap encryption access project  -  1
+Metabrainz foundation inc.  -  1
+Open source robotics foundation  -  1
+Opntec  -  1
+P2psp.org  -  1
+Pecan project  -  1
+Phpbb forum software  -  1
+Probot  -  1
+Quill.org  -  1
+Read the docs  -  1
+Space @ virginia tech  -  1
+Stemformatics  -  1
+Stony brook university biomedical informatics  -  1
+Streetmix  -  1
+Systers community  -  1
+Teammates @ national university of singapore  -  1
+Worldbrain.io - verifying the internet  -  1
+Xpra.org  -  1
+Opensuse  -  1
+The macports project  -  1
+Opensips  -  1
+The libreswan project  -  1
+Free uk genealogy  -  1
+The syslog-ng project.  -  1
+Inria foundation  -  1
+Pmd  -  1
+Eta  -  1
+Jgraphtmoira  -  1
+52°north initiative for geospatial open source software gmbh  -  1
+Canadian center for computational genomics  -  1
+Cbmi@uthsc  -  1
+Ccextractor development  -  1
+Center for research in open source software at uc santa cruz  -  1
+Fosdem  -  1
+Framenet brasil at the federal university of juiz de fora  -  1
+Institut für angewandte informatik (infai) e.v.  -  1
+Internet systems consortium  -  1
+Joomla  -  1
+Knime  -  1
+Metabrainz foundation inc  -  1
+Named data networking project  -  1
+Open technologies aliance - gfoss  -  1
+Salesforce  -  1
+Xpra  -  1
+Zulip open source project  -  1
+Mbdyn - multibody dynamics  -  1
+The vega project at the university of washington  -  1
+Api client tools at google  -  1
+Zynaddsubfx  -  1
+The java pathfinder teammoira  -  1
+Ceph foundation  -  1
+Gpac  -  1
+52° north gmbh  -  1
+Gdevelop  -  1
+Canadian centre for computational genomics  -  1
+Anitab.org open source  -  1
+Graphql foundation  -  1
+Liquid galaxy project  -  1
+Matrix  -  1
+Openemr  -  1
+Openrefine  -  1
+The gnu project  -  1
+Hazelcast  -  1
+Homebrew  -  1
+Radare  -  1
+Cuneiform digital library initiative (cdli)gfoss - open technology alliance  -  1
+Shaka player  -  1
+52°north gmbh  -  1
+Ankidroid  -  1
+Genome assembly and annotation  -  1
+Gnome foundation  -  1
+Mayor's office of new urban mechanics (city of boston)  -  1
+Media cloud  -  1
+Mediapipe  -  1
+Metacall  -  1
+Osgeo - open source geospatial foundation  -  1
+React native elements  -  1
+Tensorflow  -  1
+The r project for statistical computing  -  1
+Xfce  -  1
+Elm tooling  -  1
+Vitrivr  -  1
+Grr rapid response  -  1
+Jabref e.v.  -  1
+Java pathfinder  -  1
+Plan 9 foundationelectron  -  1
+Neutralinojs  -  1
+Moja global  -  1
+Responsible ai and human centred technology  -  1
+Our world in data  -  1
+Flashrom  -  1
+The jpf teamrocket.chat  -  1
+Stratosphere laboratory  -  1
+Czech technical university in prague  -  1
+Cockpit project  -  1
+Qdrant  -  1
+The jpf team  -  1
