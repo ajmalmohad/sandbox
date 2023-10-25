@@ -1,0 +1,285 @@
+Scrape Data
+
+ans = ""
+let names = document.getElementsByClassName("name")
+names = Array.from(names)
+names = names.map((i)=>{ return i.childNodes[0].data })
+for(item of names){ ans+=item; ans+=","}
+
+GSOC 2023
+
+rocket.chat,GRAME,cBioPortal for Cancer Genomics,Purr Data,XWiki,Processing Foundation,Jenkins,AOSSIE,R project for statistical computing,Python Software Foundation,Mayor's Office of New Urban Mechanics,LibreHealth,Wagtail,Internet Archive,Society for Arts and Technology (SAT),52°North Spatial Information Research GmbH,National Resource for Network Biology (NRNB),Internet Health Report,Mathesar,DBpedia,Plone Foundation,OpenMRS,OpenStreetMap,International Catrobat Association,OWASP Foundation,INCF,MIT App Inventor,Open Technologies Alliance - GFOSS,OpenWISP,Department of Biomedical Informatics, Emory University,Postman,caMicroscope,OSGeo (Open Source Geospatial Foundation),Wikimedia Foundation,MariaDB,GitLab,Submitty,Stratosphere Laboratory, Czech Technical University in Prague,Apertium,Open Chemistry,freifunk,PostgreSQL,Drupal Association,Learning Equality,CircuitVerse.org,Ceph,Creative Commons,The Honeynet Project,Chromium,Cockpit Project,Qdrant,AboutCode,openSUSE Project,Sugar Labs,BRL-CAD,omegaUp,Oppia Foundation,Zulip,The Palisadoes Foundation,The NetBSD Foundation,Git,JdeRobot,The ENIGMA Team,OpenCV,Rizin,FreeType,gprMax,The ns-3 Network Simulator Project,Software and Computational Systems Lab at LMU Munich,The JPF team
+
+
+GSOC 2022
+
+Electron,Neutralinojs,rocket.chat,cBioPortal for Cancer Genomics,GRAME,Joplin,Purr Data,XWiki,Processing Foundation,Jenkins,AOSSIE,Cuneiform Digital Library Initiative (CDLI),Orcasound,52°North Spatial Information Research GmbH,AboutCode,Casbin,Ceph,CHAOSS,Chromium,CircuitVerse.org,DBpedia,Department of Biomedical Informatics, Emory University,Drupal Association,freifunk,GitLab,INCF,International Catrobat Association,Internet Health Report,Jitsi,Joomla!,Learning Equality,LibreHealth,MariaDB,Mathesar,Matrix.org,Mayor's Office of New Urban Mechanics,MIT App Inventor,Mixxx,moja global,National Resource for Network Biology (NRNB),Open Bioinformatics Foundation (OBF),Open Chemistry,Open Technologies Alliance - GFOSS,OpenMRS,OpenStreetMap,OpenWISP,OSGeo (Open Source Geospatial Foundation),OWASP Foundation,Plone Foundation,Polypheny,PostgreSQL,Public Lab,Python Software Foundation,R project for statistical computing,Responsible AI and Human Centred Technology,Society for Arts and Technology (SAT),Software Heritage,Submitty,The Honeynet Project,Wagtail,Wikimedia Foundation,openSUSE Project,Sugar Labs,BRL-CAD,omegaUp,Oppia Foundation,Our World In Data,The Palisadoes Foundation,Zulip,Git,The NetBSD Foundation,Haskell.org,JdeRobot,syslog-ng,The ENIGMA Team,OpenCV,Rizin,FreeType,MZmine,The ns-3 Network Simulator Project,Flashrom,The JPF team
+
+GSOC 2021
+
+GFOSS - Open Technology Alliance,Shaka Player,Ceph,Sugar Labs,XWiki,Digital Impact Alliance (DIAL) at UN Foundation,52°North GmbH,Open Genome Informatics,AOSSIE,Internet Archive,OpenCV,Cuneiform Digital Library Initiative (CDLI),AboutCode,Accord Project,AnkiDroid,Apertium,caMicroscope,Casbin,Chromium,CircuitVerse.org,DBpedia,Debian,FOSSology,FrameNet Brasil (UFJF),Genome Assembly and Annotation,GNOME Foundation,Hydra Ecosystem,INCF,International Catrobat Association,Joomla!,Joplin,Learning Equality,LibreHealth,Matrix.org,Mayor's Office of New Urban Mechanics (City of Boston),Media Cloud,MediaPipe,MetaCall,MGGG Redistricting Lab,MIT App Inventor,National Resource for Network Biology (NRNB),NumFOCUS,Open Bioinformatics Foundation,Open Chemistry,openastronomy,OpenMined,OpenMRS,OpenStreetMap,OpenWISP,Orcasound,OSGeo - Open Source Geospatial Foundation,OWASP Foundation,Polypheny,Postman,Public Lab,Purr Data,React Native Elements,TensorFlow,The Palisadoes Foundation,The R Project for Statistical Computing,Wikimedia Foundation,Xfce,Processing Foundation,BRL-CAD,Elm Tooling,Kiwix,Open Roberta,vitrivr,Godot Engine,GRR Rapid Response,JabRef e.V.,Oppia Foundation,Zulip,LabLua,FreeBSD Project,Git,strace,The NetBSD Foundation,Haskell.org,JdeRobot - Universidad Rey Juan Carlos,syslog-ng,Rocket.Chat,The ENIGMA Team,Java PathFinder,FreeType,Rizin,gprMax,Plan 9 Foundation
+
+GSOC 2020
+
+Moira,Percona,Ceph Foundation,GPAC,XWiki,Open Genome Informatics,Jenkins project,52° North GmbH,webpack,GDevelop,Rocket.Chat,Processing Foundation,OpenCV,Canadian Centre for Computational Genomics,Open Roberta,Postman,Orcasound,AboutCode.org,Accord Project,Amahi,AnitaB.org Open Source,AOSSIE,BeagleBoard.org,caMicroscope,Casbin,CHAOSS,CircuitVerse.org,CiviCRM,Creative Commons,DBpedia,Debian,Digital Impact Alliance (DIAL) at UN Foundation,Drupal,FOSSology,FrameNet Brasil (UFJF),GraphQL Foundation,INCF,Inclusive Design Institute,Internet Archive,Kiwix,LibreHealth,Liquid Galaxy project,Matrix,MGGG Redistricting Lab,MIT App Inventor,Mixxx,Mozilla,National Resource for Network Biology (NRNB),NumFOCUS,Open Bioinformatics Foundation (OBF),Open Chemistry,OpenAstronomy,OpenEMR,OpenMRS,OpenRefine,OpenStreetMap,openSUSE Project,OpenWISP,OWASP Foundation,Purr Data,R Project for Statistical Computing,Submitty,Sugar Labs,The GNU Project,Wikimedia Foundation,MacPorts,Zulip,OpenMined,LabLua,FreeBSD Project,Git,BRL-CAD,Haskell.org,Hazelcast,JdeRobot - Universidad Rey Juan Carlos,syslog-ng,The Java Pathfinder Team,Homebrew,Kapitan,FreeType,Radare,Fedora Project,MZmine,Cuneiform Digital Library Initiative (CDLI)
+
+GSOC 2019
+
+Moira,aimacode,XWiki,BRL-CAD,Jenkins project,52°North Initiative for Geospatial Open Source Software GmbH,Rocket.Chat,InterMine,The Processing Foundation,webpack,The Center for Connected Learning and Computer-Based Modeling,Percona,Canadian Center for Computational Genomics,Purr Data,Open Roberta,Software and Computational Systems Lab at LMU Munich,CLiPS, University of Antwerp,AboutCode.org,AOSSIE - Australian Open Source Software Innovation and Education,BeagleBoard.org,cBioPortal for Cancer Genomics,CBMI@UTHSC,CCExtractor Development,Center for Research in Open Source Software at UC Santa Cruz,CHAOSS,CircuitVerse.org,CiviCRM,Computational Biology @ University of Nebraska-Lincoln,Creative Commons,DBpedia,Debian,Digital Impact Alliance,Drupal,FOSDEM,FOSSASIA,FrameNet Brasil at the Federal University of Juiz de Fora,Genes, Genomes and Variation,GNOME,Hydra Ecosystem,INCF,Institut für Angewandte Informatik (InfAI) e.V.,Internet Archive,Internet Systems Consortium,Joomla,Kiwix,KNIME,LibreHealth,Matrix.org,MetaBrainz Foundation Inc,MIT App Inventor,Moodle,Mozilla,Named Data Networking Project,National Resource for Network Biology (NRNB),NumFOCUS,Open Bioinformatics Foundation,Open Chemistry,Open Technologies Aliance - GFOSS,OpenMRS,OpenStreetMap,OpenWISP,Oppia Foundation,OWASP Foundation,Performance Co-Pilot,phpMyAdmin,Public Lab,R project for statistical computing,Salesforce,Software Heritage,Submitty,Sugar Labs,The Eclipse Foundation,UCSC Xena,Wikimedia Foundation,xpra,Zulip Open Source Project,LabLua,Godot Engine,MacPorts,MBDyn - Multibody Dynamics,The Vega Project at the University of Washington,API Client Tools at Google,FreeBSD,Gentoo Foundation,strace,Haskell.Org,JdeRobot - Universidad Rey Juan Carlos,syslog-ng,OpenCV,Neovim,Kapitan,FreeType,Fedora Project,gprMax,Cuneiform Digital Library Initiative (CDLI),ZynAddSubFX,The Java Pathfinder Team
+
+
+GSOC 2018
+
+GFOSS - Open Technologies Alliance,The Vega Visualization Tools by the UW Interactive Data Lab,Rspamd,Jenkins project,XWiki,Plone,52° North Initiative for Geospatial Open Source Software GmbH,Rocket.Chat,Jitsi,The Processing Foundation,webpack,InterMine,Neovim,Purr Data,Open Roberta Lab,Software and Computational Systems Lab at LMU Munich,CLiPS, University of Antwerp,Debian Project,aimacode,Amahi,BeeWare Project,Berkman Klein Center for Internet & Society at Harvard University,Center for Research In Open Source Software (CROSS) at UC Santa Cruz,CHAOSS: Community Health Analytics Open Source Software,Classical Language Toolkit,Computational Biology @ University of Nebraska-Lincoln,Conversations.im,Digital Impact Alliance,Drupal,Earth Science Information Partners (ESIP),FOSSASIA,freifunk,GNOME,INCF,Inclusive Design Institute,Internet Archive,Joomla!,languagetool.org,LEAP Encryption Access Project,LibreHealth,MetaBrainz Foundation Inc.,Moodle,Mozilla,National Resource for Network Biology (NRNB),NumFOCUS,Open Bioinformatics Foundation,Open Chemistry,Open Source Robotics Foundation,OpenMRS,OpenStreetMap,OpenWISP,OpnTec,Oppia Foundation,OWASP Foundation,P2PSP.org,PEcAn Project,Performance Co-Pilot,phpBB Forum Software,phpMyAdmin,Probot,Public Lab,Quill.org,R project for statistical computing,Read the Docs,Space @ Virginia Tech,Stemformatics,Stony Brook University Biomedical Informatics,Streetmix,Sugar Labs,Systers Community,TEAMMATES @ National University of Singapore,The Center for Connected Learning and Computer-Based Modeling,The Eclipse Foundation,UCSC Xena,Wikimedia Foundation,WorldBrain.io - Verifying the Internet,xpra.org,Zulip,AOSSIE - Australian Open Source Software Innovation and Education,openSUSE,Submitty,The MacPorts Project,Genes, Genomes and Variation,OpenSIPS,FreeBSD,Gentoo Foundation,Git,strace,The Libreswan Project,Free UK Genealogy,Haskell.org,JdeRobot - Universidad Rey Juan Carlos,The syslog-ng project.,Inria Foundation,PMD,Eta,The Java Pathfinder Team,FreeType,Fedora Project,JGraphT
+
+Frequency of coming
+
+Xwiki  -  6
+Purr data  -  6
+Incf  -  6
+Librehealth  -  6
+National resource for network biology (nrnb)  -  6
+Open chemistry  -  6
+Openmrs  -  6
+Openstreetmap  -  6
+Openwisp  -  6
+Owasp foundation  -  6
+Sugar labs  -  6
+Wikimedia foundation  -  6
+Freetype  -  6
+Rocket.chat  -  5
+Internet archive  -  5
+Oppia foundation  -  5
+R project for statistical computing  -  5
+Zulip  -  5
+Submitty  -  5
+Git  -  5
+Haskell.org  -  5
+Brl-cad  -  5
+Circuitverse.org  -  5
+Dbpedia  -  5
+Mit app inventor  -  5
+Opencv  -  5
+Numfocus  -  4
+Public lab  -  4
+Jderobot - universidad rey juan carlos  -  4
+Syslog-ng  -  4
+Processing foundation  -  4
+Aossie  -  4
+Jenkins project  -  3
+Webpack  -  3
+Software and computational systems lab at lmu munich  -  3
+Drupal  -  3
+Freifunk  -  3
+Joomla!  -  3
+Mozilla  -  3
+Open bioinformatics foundation  -  3
+Strace  -  3
+Fedora project  -  3
+Open roberta  -  3
+Cbioportal for cancer genomics  -  3
+Chaoss  -  3
+Creative commons  -  3
+Debian  -  3
+Kiwix  -  3
+Matrix.org  -  3
+Lablua  -  3
+Gprmax  -  3
+Cuneiform digital library initiative (cdli)  -  3
+Postman  -  3
+Orcasound  -  3
+Camicroscope  -  3
+Casbin  -  3
+Opensuse project  -  3
+Ceph  -  3
+Aboutcode  -  3
+Chromium  -  3
+International catrobat association  -  3
+Learning equality  -  3
+The palisadoes foundation  -  3
+The netbsd foundation  -  3
+The enigma team  -  3
+Rizin  -  3
+Jitsi  -  2
+The processing foundation  -  2
+Intermine  -  2
+Neovim  -  2
+Clips  -  2
+University of antwerp  -  2
+Aimacode  -  2
+Amahi  -  2
+Computational biology @ university of nebraska-lincoln  -  2
+Digital impact alliance  -  2
+Fossasia  -  2
+Gnome  -  2
+Inclusive design institute  -  2
+Moodle  -  2
+Performance co-pilot  -  2
+Phpmyadmin  -  2
+The center for connected learning and computer-based modeling  -  2
+The eclipse foundation  -  2
+Ucsc xena  -  2
+Aossie - australian open source software innovation and education  -  2
+Genes  -  2
+Genomes and variation  -  2
+Freebsd  -  2
+Gentoo foundation  -  2
+The java pathfinder team  -  2
+Percona  -  2
+Aboutcode.org  -  2
+Beagleboard.org  -  2
+Civicrm  -  2
+Hydra ecosystem  -  2
+Software heritage  -  2
+Godot engine  -  2
+Macports  -  2
+Kapitan  -  2
+Open genome informatics  -  2
+Accord project  -  2
+Digital impact alliance (dial) at un foundation  -  2
+Fossology  -  2
+Framenet brasil (ufjf)  -  2
+Mggg redistricting lab  -  2
+Mixxx  -  2
+Open bioinformatics foundation (obf)  -  2
+Openastronomy  -  2
+Openmined  -  2
+Freebsd project  -  2
+Mzmine  -  2
+Apertium  -  2
+Joplin  -  2
+Polypheny  -  2
+Grame  -  2
+Jenkins  -  2
+52°north spatial information research gmbh  -  2
+Department of biomedical informatics  -  2
+Emory university  -  2
+Drupal association  -  2
+Gitlab  -  2
+Internet health report  -  2
+Mariadb  -  2
+Mathesar  -  2
+Mayor's office of new urban mechanics  -  2
+Open technologies alliance - gfoss  -  2
+Osgeo (open source geospatial foundation)  -  2
+Plone foundation  -  2
+Postgresql  -  2
+Python software foundation  -  2
+Society for arts and technology (sat)  -  2
+The honeynet project  -  2
+Wagtail  -  2
+Omegaup  -  2
+Jderobot  -  2
+The ns-3 network simulator project  -  2
+Gfoss - open technologies alliance  -  1
+The vega visualization tools by the uw interactive data lab  -  1
+Rspamd  -  1
+Plone  -  1
+52° north initiative for geospatial open source software gmbh  -  1
+Open roberta lab  -  1
+Debian project  -  1
+Beeware project  -  1
+Berkman klein center for internet & society at harvard university  -  1
+Center for research in open source software (cross) at uc santa cruz  -  1
+Chaoss: community health analytics open source software  -  1
+Classical language toolkit  -  1
+Conversations.im  -  1
+Earth science information partners (esip)  -  1
+Languagetool.org  -  1
+Leap encryption access project  -  1
+Metabrainz foundation inc.  -  1
+Open source robotics foundation  -  1
+Opntec  -  1
+P2psp.org  -  1
+Pecan project  -  1
+Phpbb forum software  -  1
+Probot  -  1
+Quill.org  -  1
+Read the docs  -  1
+Space @ virginia tech  -  1
+Stemformatics  -  1
+Stony brook university biomedical informatics  -  1
+Streetmix  -  1
+Systers community  -  1
+Teammates @ national university of singapore  -  1
+Worldbrain.io - verifying the internet  -  1
+Xpra.org  -  1
+Opensuse  -  1
+The macports project  -  1
+Opensips  -  1
+The libreswan project  -  1
+Free uk genealogy  -  1
+The syslog-ng project.  -  1
+Inria foundation  -  1
+Pmd  -  1
+Eta  -  1
+Jgraphtmoira  -  1
+52°north initiative for geospatial open source software gmbh  -  1
+Canadian center for computational genomics  -  1
+Cbmi@uthsc  -  1
+Ccextractor development  -  1
+Center for research in open source software at uc santa cruz  -  1
+Fosdem  -  1
+Framenet brasil at the federal university of juiz de fora  -  1
+Institut für angewandte informatik (infai) e.v.  -  1
+Internet systems consortium  -  1
+Joomla  -  1
+Knime  -  1
+Metabrainz foundation inc  -  1
+Named data networking project  -  1
+Open technologies aliance - gfoss  -  1
+Salesforce  -  1
+Xpra  -  1
+Zulip open source project  -  1
+Mbdyn - multibody dynamics  -  1
+The vega project at the university of washington  -  1
+Api client tools at google  -  1
+Zynaddsubfx  -  1
+The java pathfinder teammoira  -  1
+Ceph foundation  -  1
+Gpac  -  1
+52° north gmbh  -  1
+Gdevelop  -  1
+Canadian centre for computational genomics  -  1
+Anitab.org open source  -  1
+Graphql foundation  -  1
+Liquid galaxy project  -  1
+Matrix  -  1
+Openemr  -  1
+Openrefine  -  1
+The gnu project  -  1
+Hazelcast  -  1
+Homebrew  -  1
+Radare  -  1
+Cuneiform digital library initiative (cdli)gfoss - open technology alliance  -  1
+Shaka player  -  1
+52°north gmbh  -  1
+Ankidroid  -  1
+Genome assembly and annotation  -  1
+Gnome foundation  -  1
+Mayor's office of new urban mechanics (city of boston)  -  1
+Media cloud  -  1
+Mediapipe  -  1
+Metacall  -  1
+Osgeo - open source geospatial foundation  -  1
+React native elements  -  1
+Tensorflow  -  1
+The r project for statistical computing  -  1
+Xfce  -  1
+Elm tooling  -  1
+Vitrivr  -  1
+Grr rapid response  -  1
+Jabref e.v.  -  1
+Java pathfinder  -  1
+Plan 9 foundationelectron  -  1
+Neutralinojs  -  1
+Moja global  -  1
+Responsible ai and human centred technology  -  1
+Our world in data  -  1
+Flashrom  -  1
+The jpf teamrocket.chat  -  1
+Stratosphere laboratory  -  1
+Czech technical university in prague  -  1
+Cockpit project  -  1
+Qdrant  -  1
+The jpf team  -  1
