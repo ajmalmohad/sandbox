@@ -1,0 +1,4 @@
+1. yacc -d identifier.y
+2. lex identifier.l
+3. gcc lex.yy.c y.tab.h -lfl
+4. ./a.out
