@@ -4,7 +4,7 @@
 %}
 
 %%
-[a-z|A-Z|0-9] {characters++;}
+[a-zA-Z0-9] {characters++;}
 " " {words++;}
 "\n" {words++; lines++;}
 . {}
