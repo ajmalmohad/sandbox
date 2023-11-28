@@ -3,7 +3,7 @@
 %}
 
 %%
-[\t\n" "] {}
+[\t\n ] {}
 %%
 
 int main(int argc, char* argv[]){
