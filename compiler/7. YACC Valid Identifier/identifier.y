@@ -1,6 +1,6 @@
 %{
 	#include <stdio.h>
-	int valid=1;
+	int valid = 0;
 %}
 
 %token digit letter
@@ -13,13 +13,11 @@ s : letter s | digit s | ;
 int main(){
 	printf("Enter a name to tested for identifier: \n");
 	yyparse();
-	if(valid){
-		printf("\n It is a identifier!");
-	}
+	if(valid) printf("\n It is a identifier!");
 }
 
 int yyerror(){
 	printf("\nIts not a identifier!");
-	valid=0;
+	valid = 0;
 	return 0;
 }
