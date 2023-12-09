@@ -1,30 +1,30 @@
 use std::io::*;
 use std::fs::File;
 use std::cmp;
-use std::time::{Duration, Instant};
+use std::time::{Instant};
 
-fn parse_tuple(text: &str) -> Vec<u32> {
+fn parse_tuple(text: &str) -> Vec<u64> {
     return text
     .trim()
     .split(' ')
     .filter(|x| !x.is_empty())
-    .map(|x| x.parse::<u32>().unwrap())
+    .map(|x| x.parse::<u64>().unwrap())
     .take(3)
     .collect();
 }
 
-fn parse_seeds(text: &str) -> Vec<u32> {
+fn parse_seeds(text: &str) -> Vec<u64> {
     return text
     .split(":")
     .collect::<Vec<&str>>()[1]
     .trim().split(' ')
     .filter(|x| !x.is_empty())
-    .map(|x| x.parse::<u32>()
+    .map(|x| x.parse::<u64>()
     .unwrap()).collect();
 }
 
-fn do_mapping(current: u32, map: &Vec<Vec<u32>>) -> u32 {
-    let mut value: u32 = current;
+fn do_mapping(current: u64, map: &Vec<Vec<u64>>) -> u64 {
+    let mut value: u64 = current;
     for entity in map {
         if value >= entity[1] && value < entity[1] + entity[2] {
             value = entity[0] + (value - entity[1]);
@@ -34,21 +34,60 @@ fn do_mapping(current: u32, map: &Vec<Vec<u32>>) -> u32 {
     return value;
 }
 
+fn do_range_mapping(ranges: Vec<(u64, u64)>, map: &Vec<Vec<u64>>) -> Vec<(u64, u64)> {
+    let mut new_ranges: Vec<(u64, u64)> = vec![];
+    let mut others: Vec<(u64, u64)> = vec![];
+
+    for range in &ranges{
+        let mut matched = false;
+        for entity in map {
+            let entity_range = (entity[1], entity[1] + entity[2]);
+            let os = cmp::max(range.0, entity_range.0);
+            let oe = cmp::min(range.1, entity_range.1);
+            if os < oe {
+                new_ranges.push((os - entity[1] + entity[0], oe - entity[1] + entity[0]));
+                matched = true;
+                if os > range.0 {
+                    others.push((range.0, os));
+                }
+                if range.1 > oe {
+                    others.push((oe, range.1));
+                }
+                break;
+            }
+        }
+        if !matched {new_ranges.push((range.0, range.1));}
+    }
+
+    for range in &others{
+        for entity in map {
+            let entity_range = (entity[1], entity[1] + entity[2]);
+            let os = cmp::max(range.0, entity_range.0);
+            let oe = cmp::min(range.1, entity_range.1);
+            if os < oe {
+                let ans = (os - entity_range.0 + entity[0], oe - entity_range.0 + entity[0]);
+                new_ranges.push(ans);
+            }
+        }
+    }
+        
+    return new_ranges;
+}
+
 fn main() {
     let file = File::open("./input.txt").unwrap();
     let reader = BufReader::new(file);
-    let mut mode: u32 = 0;
-    let mut part1: u32 = std::u32::MAX;
-    let mut part2: u32 = std::u32::MAX;
+    let mut mode: u64 = 0;
+    let mut part1: u64 = std::u64::MAX;
 
-    let mut seeds: Vec<u32> = vec![];
-    let mut soils: Vec<Vec<u32>> = Vec::new();
-    let mut fertilizers: Vec<Vec<u32>> = Vec::new();
-    let mut waters: Vec<Vec<u32>> = Vec::new();
-    let mut lights: Vec<Vec<u32>> = Vec::new();
-    let mut temperatures: Vec<Vec<u32>> = Vec::new();
-    let mut humiditys: Vec<Vec<u32>> = Vec::new();
-    let mut locations: Vec<Vec<u32>> = Vec::new();
+    let mut seeds: Vec<u64> = vec![];
+    let mut soils: Vec<Vec<u64>> = Vec::new();
+    let mut fertilizers: Vec<Vec<u64>> = Vec::new();
+    let mut waters: Vec<Vec<u64>> = Vec::new();
+    let mut lights: Vec<Vec<u64>> = Vec::new();
+    let mut temperatures: Vec<Vec<u64>> = Vec::new();
+    let mut humiditys: Vec<Vec<u64>> = Vec::new();
+    let mut locations: Vec<Vec<u64>> = Vec::new();
 
     let start = Instant::now();
     for line in reader.lines() {
@@ -78,7 +117,7 @@ fn main() {
     }
 
     for seed in &seeds {
-        let mut current: u32 = *seed;
+        let mut current: u64 = *seed;
         current = do_mapping(current, &soils);
         current = do_mapping(current, &fertilizers);
         current = do_mapping(current, &waters);
@@ -89,25 +128,22 @@ fn main() {
         part1 = cmp::min(part1, current);
     }
 
+    let mut ranges: Vec<(u64, u64)> = vec![];
     for seed_pair in seeds.chunks(2) {
-        let start = seed_pair[0];
-        let end = seed_pair[0] + seed_pair[1];
-        // for num in seed_pair[0]..seed_pair[0]+seed_pair[1]+1 {
-        //     let mut current: u32 = num;
-        //     current = do_mapping(current, &soils);
-        //     current = do_mapping(current, &fertilizers);
-        //     current = do_mapping(current, &waters);
-        //     current = do_mapping(current, &lights);
-        //     current = do_mapping(current, &temperatures);
-        //     current = do_mapping(current, &humiditys);
-        //     current = do_mapping(current, &locations);
-        //     part2 = cmp::min(part2, current);
-        // }
+        ranges.push((seed_pair[0], seed_pair[0] + seed_pair[1] - 1));
     }
 
-    println!("Part 1: {}", part1);
-    let duration = start.elapsed();
+    ranges = do_range_mapping(ranges, &soils);
+    ranges = do_range_mapping(ranges, &fertilizers);
+    ranges = do_range_mapping(ranges, &waters);
+    ranges = do_range_mapping(ranges, &lights);
+    ranges = do_range_mapping(ranges, &temperatures);
+    ranges = do_range_mapping(ranges, &humiditys);
+    ranges = do_range_mapping(ranges, &locations);
+    ranges.sort();
 
+    println!("Part 1: {}", part1);
+    println!("Part 2: {:?}", ranges[0].0);
+    let duration = start.elapsed();
     println!("Time elapsed: {:?}", duration);
-    // println!("Part 2: {}", part2);
 }
