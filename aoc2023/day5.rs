@@ -34,43 +34,29 @@ fn do_mapping(current: u64, map: &Vec<Vec<u64>>) -> u64 {
     return value;
 }
 
-fn do_range_mapping(ranges: Vec<(u64, u64)>, map: &Vec<Vec<u64>>) -> Vec<(u64, u64)> {
+fn do_range_mapping(ranges: &mut Vec<(u64, u64)>, map: &Vec<Vec<u64>>) -> Vec<(u64, u64)> {
     let mut new_ranges: Vec<(u64, u64)> = vec![];
-    let mut others: Vec<(u64, u64)> = vec![];
+    let mut i = 0;
 
-    for range in &ranges{
+    while i < ranges.len() {
         let mut matched = false;
         for entity in map {
             let entity_range = (entity[1], entity[1] + entity[2]);
-            let os = cmp::max(range.0, entity_range.0);
-            let oe = cmp::min(range.1, entity_range.1);
+            let os = cmp::max(ranges[i].0, entity_range.0);
+            let oe = cmp::min(ranges[i].1, entity_range.1);
             if os < oe {
                 new_ranges.push((os - entity[1] + entity[0], oe - entity[1] + entity[0]));
                 matched = true;
-                if os > range.0 {
-                    others.push((range.0, os));
-                }
-                if range.1 > oe {
-                    others.push((oe, range.1));
-                }
+                // Check these again for other matches
+                if os > ranges[i].0 { ranges.push((ranges[i].0, os)); }
+                if ranges[i].1 > oe { ranges.push((oe, ranges[i].1)); }
+                // If a match found we can break
                 break;
             }
         }
-        if !matched {new_ranges.push((range.0, range.1));}
+        if !matched {new_ranges.push((ranges[i].0, ranges[i].1));}
+        i+=1;
     }
-
-    for range in &others{
-        for entity in map {
-            let entity_range = (entity[1], entity[1] + entity[2]);
-            let os = cmp::max(range.0, entity_range.0);
-            let oe = cmp::min(range.1, entity_range.1);
-            if os < oe {
-                let ans = (os - entity_range.0 + entity[0], oe - entity_range.0 + entity[0]);
-                new_ranges.push(ans);
-            }
-        }
-    }
-        
     return new_ranges;
 }
 
@@ -133,13 +119,13 @@ fn main() {
         ranges.push((seed_pair[0], seed_pair[0] + seed_pair[1] - 1));
     }
 
-    ranges = do_range_mapping(ranges, &soils);
-    ranges = do_range_mapping(ranges, &fertilizers);
-    ranges = do_range_mapping(ranges, &waters);
-    ranges = do_range_mapping(ranges, &lights);
-    ranges = do_range_mapping(ranges, &temperatures);
-    ranges = do_range_mapping(ranges, &humiditys);
-    ranges = do_range_mapping(ranges, &locations);
+    ranges = do_range_mapping(&mut ranges, &soils);
+    ranges = do_range_mapping(&mut ranges, &fertilizers);
+    ranges = do_range_mapping(&mut ranges, &waters);
+    ranges = do_range_mapping(&mut ranges, &lights);
+    ranges = do_range_mapping(&mut ranges, &temperatures);
+    ranges = do_range_mapping(&mut ranges, &humiditys);
+    ranges = do_range_mapping(&mut ranges, &locations);
     ranges.sort();
 
     println!("Part 1: {}", part1);
