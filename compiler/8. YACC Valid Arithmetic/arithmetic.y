@@ -4,7 +4,9 @@
 %}
 
 %token NUMBER ALPHA
-%left '+''-''*''/''('')'
+%left '+' '-'
+%left '*' '/'
+%left '(' ')'
 
 %%
 expr: '+'expr | '-'expr | '(' expr ')'

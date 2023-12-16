@@ -3,7 +3,8 @@
 %}
 
 %token NUMBER ID;
-%left '+''-''*''/'
+%left '+' '-'
+%left '*' '/'
 
 %%
 E:T {

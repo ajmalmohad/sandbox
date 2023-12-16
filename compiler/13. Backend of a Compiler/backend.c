@@ -11,11 +11,11 @@ void main(){
     } while (strcmp(intermediateCode[instructionIndex++], "exit") != 0);
 
     printf("\nTarget code generation");
-    printf("\n**********************");
+    printf("\n********************\n");
 
     instructionIndex = 0;
 
-    do{
+    while (strcmp(intermediateCode[instructionIndex], "exit") != 0){
         strcpy(singleInstruction, intermediateCode[instructionIndex]);
         switch (singleInstruction[3]){
         case '+':
@@ -31,8 +31,9 @@ void main(){
             strcpy(operation, "DIV");
             break;
         }
-        printf("\nMOV %c,R%d", singleInstruction[2], instructionIndex);
-        printf("\n%s %c,R%d", operation, singleInstruction[4], instructionIndex);
-        printf("\nMOV R%d,%c", instructionIndex, singleInstruction[0]);
-    } while (strcmp(intermediateCode[++instructionIndex], "exit") != 0);
+        printf("MOV R%d,%c\n", instructionIndex, singleInstruction[2]);
+        printf("%s R%d,%c\n", operation, instructionIndex, singleInstruction[4]);
+        printf("MOV %c,R%d\n", singleInstruction[0], instructionIndex);
+        instructionIndex++;
+    }
 }
