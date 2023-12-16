@@ -1,6 +1,6 @@
 %{
 	#include <stdio.h>
-	int valid = 0;
+	int valid = 1;
 %}
 
 %token digit letter
