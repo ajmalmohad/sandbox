@@ -18,11 +18,11 @@ expr: '+'expr | '-'expr | '(' expr ')'
 int main(){
 	printf("Enter an arithmetic expression: \n");
 	yyparse();
-	if(valid) printf("\n It is a valid arithmetic!");
+	if(valid) printf("It is a valid arithmetic!\n");
 }
 
 int yyerror(){
-	printf("\nIts not a valid arithmetic!");
+	printf("Its not a valid arithmetic!\n");
 	valid = 0;
 	return 0;
 }

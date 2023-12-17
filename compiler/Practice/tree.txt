@@ -18,25 +18,6 @@
 ├── 13. Backend of a Compiler
 │   ├── a.out
 │   └── backend.c
-├── 5. Lexical Analyzer in C
-│   ├── a.out
-│   ├── input.txt
-│   ├── lexer.c
-│   └── run.sh
-├── 6. Lexical Analyzer LEX Tool
-│   ├── a.out
-│   ├── input.txt
-│   ├── lexer.l
-│   ├── lex.yy.c
-│   └── run.sh
-├── 7. YACC Valid Identifier
-│   ├── a.out
-│   ├── identifier.l
-│   ├── identifier.y
-│   ├── lex.yy.c
-│   ├── run.txt
-│   ├── y.tab.c
-│   └── y.tab.h
 ├── 8. YACC Valid Arithmetic
 │   ├── a.out
 │   ├── arithmetic.l

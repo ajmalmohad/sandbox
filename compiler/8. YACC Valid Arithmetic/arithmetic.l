@@ -5,6 +5,11 @@
 %%
 [a-zA-Z] return ALPHA;
 [0-9]+ return NUMBER;
-[\t\n]+ ;
+[\t ]+ ;
+\n return 0;
 . return yytext[0];
 %%
+
+int yywrap() {
+    return 1;
+}

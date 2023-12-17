@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+/*
+This is a comment
+*/
+
+void main(){
+        int a[], b[100], c, d;
+        c = c+d-e;
+        e = "ajmal";
+        e = c >= 2;
+}
