@@ -48,12 +48,10 @@ int main(){
 		if(isOperator(ch)){
 			printf("\n%c is an operator\n", ch);
 		}
-		
-		if(isalnum(ch)){
+		else if(isalnum(ch)){
 			lexeme[index++]=ch;
 		}
-		
-		if(isSpace(ch) && index!=0){
+		else if(isSpace(ch) && index!=0){
 			lexeme[index] = '\0';
 			index = 0;
 			if(isKeyword(lexeme)) {

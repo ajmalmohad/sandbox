@@ -1,0 +1,59 @@
+.
+├── 10. Lower Case to Upper Case
+│   ├── a.out
+│   ├── input.txt
+│   ├── lex.yy.c
+│   └── lower.l
+├── 11. Odd Zero Even One DFA
+│   ├── a.out
+│   ├── dfa.l
+│   └── lex.yy.c
+├── 12. Intermediate Code Generation
+│   ├── a.out
+│   ├── inter.l
+│   ├── inter.y
+│   ├── lex.yy.c
+│   ├── y.tab.c
+│   └── y.tab.h
+├── 13. Backend of a Compiler
+│   ├── a.out
+│   └── backend.c
+├── 5. Lexical Analyzer in C
+│   ├── a.out
+│   ├── input.txt
+│   ├── lexer.c
+│   └── run.sh
+├── 6. Lexical Analyzer LEX Tool
+│   ├── a.out
+│   ├── input.txt
+│   ├── lexer.l
+│   ├── lex.yy.c
+│   └── run.sh
+├── 7. YACC Valid Identifier
+│   ├── a.out
+│   ├── identifier.l
+│   ├── identifier.y
+│   ├── lex.yy.c
+│   ├── run.txt
+│   ├── y.tab.c
+│   └── y.tab.h
+├── 8. YACC Valid Arithmetic
+│   ├── a.out
+│   ├── arithmetic.l
+│   ├── arithmetic.y
+│   ├── lex.yy.c
+│   ├── run.txt
+│   ├── y.tab.c
+│   └── y.tab.h
+├── 9. Implement Calculator
+│   ├── a.out
+│   ├── calc.l
+│   ├── calc.y
+│   ├── lex.yy.c
+│   ├── run.txt
+│   ├── y.tab.c
+│   └── y.tab.h
+└── Practice
+    └── tree.txt
+
+13 directories, 57 files
