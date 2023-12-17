@@ -1,0 +1,7 @@
+/* this is for counting the no of comment lines in a given prog. */
+#include<stdio.h>
+int main(){
+    int a,b; //data type declaration
+    printf("this is test program "); /* this is for printing */
+    return 0;
+} //end of main program
