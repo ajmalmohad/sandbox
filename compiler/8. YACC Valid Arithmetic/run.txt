@@ -1,5 +1,5 @@
 1. yacc -d arithmetic.y
 2. lex arithmetic.l
-3. gcc lex.yy.c y.tab.h -lfl
+3. gcc lex.yy.c y.tab.c -lfl
 4. ./a.out
 5. After entering artihmetic expression if valid press CTRL+D to get output
