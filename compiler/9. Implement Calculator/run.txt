@@ -1,4 +1,4 @@
 1. yacc -d calc.y
 2. lex calc.l
-3. gcc lex.yy.c y.tab.h -lfl
+3. gcc lex.yy.c y.tab.c -lfl
 4. ./a.out
