@@ -1,0 +1,1 @@
+docker build -t server . && docker run -it --init --rm -p 3000:3000 server
