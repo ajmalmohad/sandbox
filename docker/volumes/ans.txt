@@ -1,0 +1,1 @@
+docker run --rm --env DATA_PATH=/data/num.txt -v incrementer-data:/data incrementer
